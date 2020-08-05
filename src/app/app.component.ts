@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { from, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -57,5 +58,15 @@ export class AppComponent implements OnInit {
     // Conditional Operator (if alternative)
     2 > 1 ? lol = 'yiss' : lol = 'wat';
     console.log(lol)
+
+
+    ////////////////////////////////////
+    // Observables & streams 
+    const dat = from([1,2,3,4,5,6]);
+    dat.subscribe(s => console.log('item:',s));
+
+    const stm = fromEvent(document, 'mousemove');
+    stm.subscribe((s:any) => console.log('Event:', s.clientX + ', ' + s.clientY))
+
   }
 }
