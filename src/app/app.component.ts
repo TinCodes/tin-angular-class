@@ -9,6 +9,8 @@ import { from, fromEvent } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'curso-angular';
 
+  name: string = 'Tincho';
+
   ngOnInit(){
     const aux = [1,2,3,4,5,6,7,8];
     const index = aux.findIndex(s => s === 3);
@@ -72,4 +74,10 @@ export class AppComponent implements OnInit {
   showData(event){
     console.log("Event: ", event);
   }
+
+  changeName() {
+    this.name = "It was me, Dio";
+    console.log("New name: ", this.name);
+  }
+
 }
