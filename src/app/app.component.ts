@@ -67,6 +67,9 @@ export class AppComponent implements OnInit {
 
     const stm = fromEvent(document, 'mousemove');
     stm.subscribe((s:any) => console.log('Event:', s.clientX + ', ' + s.clientY))
+  }
 
+  showData(event){
+    console.log("Event: ", event);
   }
 }
