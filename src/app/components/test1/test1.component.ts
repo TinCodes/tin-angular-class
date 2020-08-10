@@ -2,8 +2,13 @@ import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-test1',
-  templateUrl: './test1.component.html',
-  styleUrls: ['./test1.component.scss']
+  template: `<div style="border: 1px solid red">
+	<input type="text" [(ngModel)]="user">
+	<p>User: {{user}}</p>
+</div>`,
+  styles: [
+  	``
+  ]
 })
 export class Test1Component implements OnInit, OnDestroy {
 
