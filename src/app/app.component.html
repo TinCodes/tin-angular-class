@@ -6,3 +6,7 @@
 
 <app-test1 *ngIf="sw" name="lol"></app-test1>
 <button (click)="sw = false;">Destroy Component</button>
+
+<div *ngFor="let item of items; let i = index">
+	<p>Item: {{item}} - Index: {{i}}</p>
+</div>

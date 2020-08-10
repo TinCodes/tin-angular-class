@@ -9,6 +9,7 @@ import { from, fromEvent } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'curso-angular';
   sw = true;
+  items = ['Cherry','Strawberry','Orange','Apple','Melon','Galaxian','Bell','Key'];
 
   name: string = 'Tincho';
 
@@ -70,6 +71,9 @@ export class AppComponent implements OnInit {
 
     const stm = fromEvent(document, 'mousemove');
     stm.subscribe((s:any) => console.log('Event:', s.clientX + ', ' + s.clientY))*/
+
+
+    // Directives
 
   }
 
