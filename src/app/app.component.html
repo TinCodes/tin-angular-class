@@ -1,38 +1,10 @@
-<p>Tincho, now in Times New Roman</p>
-
-<app-test [name]="name" age="23" description="Mad Genius" (data)="showData($event)"></app-test>
-
-<button (click)="changeName()">Name Changer</button>
-
-<app-test1 *ngIf="sw" name="lol"></app-test1>
-<button (click)="sw = false;">Destroy Component</button>
-
-<div *ngFor="let item of items; let i = index">
-	<p>Item: {{item}} - Index: {{i}}</p>
-</div>
-
-<div [ngSwitch]="color">
-	<p *ngSwitchCase="'black'">Monochrome</p>
-	<p *ngSwitchCase="'beige'">Sepia</p>
-	<p *ngSwitchDefault>Technicolor</p>
-</div>
-
-<button (click)="color = 'yellow'">Yellow</button>
-<button (click)="color = 'green'">Green</button>
-<button (click)="color = 'red'">Red</button>
-<div [ngStyle]="{'background-color': color, 'color': 'black'}">
-	Style Example
-</div>
-
-<div [style.color]="color">
-	Style Property Example
-</div>
-
-<button (click)="testClass = !testClass">Change class style</button>
-<div [ngClass]="{'styleTest': testClass, 'styleTest1': !testClass}">
-	ngClass Example
-</div>
-
-<div [class.styleTest]="testClass">
-	Class Property Example 
+<div *ngFor="let user of users">
+	<div [ngStyle]="{'background-color': user.enabled ? 'cyan' : 'red'}">
+		<user 
+			[name]="user.name" 
+			[lastname]="user.lastname" 
+			[age]="user.age" 
+			[enabled]="user.enabled">
+		</user>
+	</div>
 </div>
