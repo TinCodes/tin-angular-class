@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   sw = true;
   items = ['Cherry','Strawberry','Orange','Apple','Melon','Galaxian','Bell','Key'];
   color: string = "black";
+  testClass = true;
+
 
   name: string = 'Tincho';
 

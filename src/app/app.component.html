@@ -27,3 +27,12 @@
 <div [style.color]="color">
 	Style Property Example
 </div>
+
+<button (click)="testClass = !testClass">Change class style</button>
+<div [ngClass]="{'styleTest': testClass, 'styleTest1': !testClass}">
+	ngClass Example
+</div>
+
+<div [class.styleTest]="testClass">
+	Class Property Example 
+</div>
