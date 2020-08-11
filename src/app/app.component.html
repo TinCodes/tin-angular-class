@@ -16,3 +16,14 @@
 	<p *ngSwitchCase="'beige'">Sepia</p>
 	<p *ngSwitchDefault>Technicolor</p>
 </div>
+
+<button (click)="color = 'yellow'">Yellow</button>
+<button (click)="color = 'green'">Green</button>
+<button (click)="color = 'red'">Red</button>
+<div [ngStyle]="{'background-color': color, 'color': 'black'}">
+	Style Example
+</div>
+
+<div [style.color]="color">
+	Style Property Example
+</div>
