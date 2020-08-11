@@ -10,3 +10,9 @@
 <div *ngFor="let item of items; let i = index">
 	<p>Item: {{item}} - Index: {{i}}</p>
 </div>
+
+<div [ngSwitch]="color">
+	<p *ngSwitchCase="'black'">Monochrome</p>
+	<p *ngSwitchCase="'beige'">Sepia</p>
+	<p *ngSwitchDefault>Technicolor</p>
+</div>

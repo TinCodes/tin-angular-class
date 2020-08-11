@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'curso-angular';
   sw = true;
   items = ['Cherry','Strawberry','Orange','Apple','Melon','Galaxian','Bell','Key'];
+  color: string = "black";
 
   name: string = 'Tincho';
 
