@@ -5,9 +5,11 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './components/test/test.component';
 import { Test1Component } from './components/test1/test1.component';
 import { FormsModule } from '@angular/forms';
+
 import { UserModule } from './modules/user/user.module';
-import { UserComponent } from './modules/user/components/user/user.component';
 import { ProductModule } from './modules/product/product.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { EntityModule } from './modules/entity/entity.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { ProductModule } from './modules/product/product.module';
     BrowserModule,
     FormsModule,
     UserModule,
-    ProductModule
+    ProductModule,
+
+    AdminModule,
+    EntityModule
   ],
   providers: [],
   bootstrap: [AppComponent]
