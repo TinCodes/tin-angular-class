@@ -1,16 +1,9 @@
-<div *ngFor="let user of users">
-	<div [ngStyle]="{'background-color': user.enabled ? 'cyan' : 'red'}">
-		<user 
-			[name]="user.name" 
-			[lastname]="user.lastname" 
-			[age]="user.age" 
-			[enabled]="user.enabled">
-		</user>
-	</div>
-</div>
+<h1>Pipes</h1>
 
-<prod1></prod1>
-<prod3></prod3>
+<p>Pipe to json: {{users | json}}</p>
+<p>Pipe to Uppercase: {{ 'lol' | uppercase }}</p>
+<p>Pipe to lowercase: {{ 'LMAO' | lowercase }}</p>
+<p>Pipe for Dates: {{ "2019-05-19" | date }}</p>
 
-<ad1></ad1>
-<ent1></ent1>
+<h3>Custom Pipe </h3>
+ <p>{{ "Magic String" | test }}</p>
