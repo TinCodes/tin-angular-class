@@ -11,13 +11,15 @@ import { ProductModule } from './modules/product/product.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { EntityModule } from './modules/entity/entity.module';
 import { TestPipe } from './pipes/test.pipe';
+import { ExpPipe } from './pipes/exp.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     Test1Component,
-    TestPipe
+    TestPipe,
+    ExpPipe
   ],
   imports: [
     BrowserModule,
