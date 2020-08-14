@@ -10,3 +10,8 @@
 
  <h3>Another Custom Pipe</h3>
  <p>{{ 2 | exp: 6 }}</p>
+
+ <h3>Pipe used from a component</h3>
+ Value <input type="text" [(ngModel)]="someVal">
+ Exponent <input type="text" [(ngModel)]="someExp">
+ <p>{{ someVal | exp: someExp : 'Result:' }}</p>

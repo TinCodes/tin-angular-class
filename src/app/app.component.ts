@@ -36,6 +36,9 @@ export class AppComponent implements OnInit {
     }
   ]
 
+  someVal : number = 2;
+  someExp : number = 3;
+  
   ngOnInit(){
 
   }
