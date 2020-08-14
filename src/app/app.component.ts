@@ -38,8 +38,19 @@ export class AppComponent implements OnInit {
 
   someVal : number = 2;
   someExp : number = 3;
-  
-  ngOnInit(){
 
+  nums = [1,2,3,4,5,6,7,8,9,10]; 
+
+  pure(a:number, b:number) {
+    return a + b;
+  }
+
+  impure(a:number, b:number) {
+    return a + b + Math.random();
+  }
+
+  ngOnInit(){
+    console.log("Pure: ", this.pure(6,2));
+    console.log("Impure: ", this.impure(6,2));
   }
 }

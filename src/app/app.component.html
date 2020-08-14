@@ -15,3 +15,11 @@
  Value <input type="text" [(ngModel)]="someVal">
  Exponent <input type="text" [(ngModel)]="someExp">
  <p>{{ someVal | exp: someExp : 'Result:' }}</p>
+
+ <h3>Pure funciton</h3>
+<p>{{ nums | pure }}</p>
+
+ <h3>Impure function</h3>
+ <p>{{ nums | impure }}</p>
+
+ <button (click)="nums.push(7)">Add number</button>
