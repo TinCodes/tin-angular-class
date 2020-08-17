@@ -14,6 +14,7 @@ import { TestPipe } from './pipes/test.pipe';
 import { ExpPipe } from './pipes/exp.pipe';
 import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
+import { NgColorDirective } from './directives/ng-color.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ImpurePipe } from './pipes/impure.pipe';
     TestPipe,
     ExpPipe,
     PurePipe,
-    ImpurePipe
+    ImpurePipe,
+    NgColorDirective
   ],
   imports: [
     BrowserModule,
