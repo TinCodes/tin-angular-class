@@ -1,4 +1,4 @@
-import { Component, AfterContentChecked, AfterContentInit, DoCheck, OnChanges, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, AfterContentChecked, AfterContentInit, DoCheck, OnChanges, OnInit, Input, Output, EventEmitter, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-test',
@@ -15,10 +15,27 @@ export class TestComponent implements OnChanges, OnInit, DoCheck {
 
   @Input() exString: string = "lol";
 
+  // Getters y setters
+  __tempVar1: string; 
+
+  @Input()
+  get var1() {
+    return this.__tempVar1;
+  }
+  set var1(var1: string){
+    this.__tempVar1 = var1;
+  }
+  @Input() var2: string;
+
   constructor() { }
 
-  ngOnChanges() {
-    console.log("I'm executing OnChanges")
+  ngOnChanges(changes: SimpleChange) {
+    if (changes && changes.var2 && changes.var2.currentValue) {
+      console.log("I'm executing OnChanges", changes.var2.currentValue);
+      const temp = 'Temporal lol';
+      changes.var2.currentValue;
+      this.var2 = temp;
+    }
   }
 
   ngOnInit(): void {
