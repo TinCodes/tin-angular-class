@@ -17,7 +17,8 @@ const routes: Routes = [
 		] 
 	},
 	{ path: 'admin', component: AdminComponent },
-	{ path: 'about', component: AboutComponent }
+	{ path: 'about', component: AboutComponent },
+	{ path: 'fruits', loadChildren: () => import('./modules/fruits/fruits.module').then(m => m.FruitsModule) }
 ];
 
 @NgModule({
