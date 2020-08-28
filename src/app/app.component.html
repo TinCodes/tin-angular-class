@@ -1,29 +1,20 @@
-<h2>lol</h2>
-
-<button routerLink="home">Home</button>
-<button routerLink="about">About</button>
-<button routerLink="admin">Admin</button>
-
-<button routerLink="fruits">Fruits</button>
-
-<div style="border: 5px solid cyan; border-radius: 5px;">
-  <router-outlet>
-  </router-outlet> 
-</div>
-<br>
-
-<div style="border: 5px solid blue; border-radius: 5px;">
-	<h3>Angular Material</h3>
-	<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-	<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
-</div>
-
-<div style="border: 5px solid green; border-radius: 5px;">
-	<h3>NG Bootstrap</h3>
-	<p *ngFor="let alert of alerts">
-	  <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
-	</p>
-	<p>
-	  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
-	</p>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Encargos Ahora</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="admin">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="list">List</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
