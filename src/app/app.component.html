@@ -10,7 +10,20 @@
   <router-outlet>
   </router-outlet> 
 </div>
+<br>
 
 <div style="border: 5px solid blue; border-radius: 5px;">
-	
+	<h3>Angular Material</h3>
+	<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+	<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+</div>
+
+<div style="border: 5px solid green; border-radius: 5px;">
+	<h3>NG Bootstrap</h3>
+	<p *ngFor="let alert of alerts">
+	  <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+	</p>
+	<p>
+	  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+	</p>
 </div>
