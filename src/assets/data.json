@@ -1,0 +1,39 @@
+{
+	"products": {
+		"p1": {
+			"title": "Concept",
+			"description": "A great idea of something.",
+			"imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+			"ownerId": 1,
+			"price": 10
+		},
+		"p2": {
+			"title": "Concept",
+			"description": "A great idea of something.",
+			"imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+			"ownerId": 1,
+			"price": 10
+		},
+		"p3": {
+			"title": "Concept",
+			"description": "A great idea of something.",
+			"imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+			"ownerId": 1,
+			"price": 10
+		},
+		"p4": {
+			"title": "Concept",
+			"description": "A great idea of something.",
+			"imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+			"ownerId": 1,
+			"price": 10
+		},
+		"p5": {
+			"title": "Concept",
+			"description": "A great idea of something.",
+			"imageUrl": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+			"ownerId": 1,
+			"price": 10
+		}
+	}
+}

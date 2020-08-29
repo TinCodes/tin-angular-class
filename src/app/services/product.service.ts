@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,47 +8,12 @@ import { Injectable } from '@angular/core';
 
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public getProducts() : any[] {
+  public getProducts() : Observable<any> {
 
-  	return [
-		{
-			title: "Concept",
-			description: "A great idea of something.",
-			imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-			ownerId: 1,
-			price: 10
-		},
-		{
-			title: "Concept",
-			description: "A great idea of something.",
-			imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-			ownerId: 1,
-			price: 10
-		},
-		{
-			title: "Concept",
-			description: "A great idea of something.",
-			imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-			ownerId: 1,
-			price: 10
-		},
-		{
-			title: "Concept",
-			description: "A great idea of something.",
-			imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-			ownerId: 1,
-			price: 10
-		},
-		{
-			title: "Concept",
-			description: "A great idea of something.",
-			imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-			ownerId: 1,
-			price: 10
-		}
-	];
+  	return this.http.get('https://tincannonica.firebaseio.com/products.json');
+
   }
 
 }
