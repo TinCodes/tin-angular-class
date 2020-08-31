@@ -1,1 +1,15 @@
 <p>admin works!</p>
+
+<form [formGroup]="productForm" style="display: flex; flex-direction: column;">
+	<input formControlName="title" type="text">
+	<input formControlName="description" type="text">
+	<input formControlName="imageUrl" type="text">
+	<input formControlName="ownerId" type="text">
+	<input formControlName="price" type="text">	
+</form>
+<button (click)="onSend()">Send</button>
+
+<!-- X1, simple form -->
+<!-- <input type="text" [formControl]="nameControl">
+<button (click)="onSend()">Send</button> -->
+
