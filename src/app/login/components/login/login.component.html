@@ -1,6 +1,36 @@
 <p>login works!</p>
 
-<button routerLink="/pages">Log In</button>
+<!-- using banana function -->
+<!-- <div style="display: flex; flex-direction: column;">
+	<input type="text" [(ngModel)]="username">
+	<input type="password" [(ngModel)]="password">
+</div> -->
+
+<!-- X2 using form and local var -->
+<!-- <div style="display: flex; flex-direction: column;">
+	<form #form="ngForm">
+		<input type="text" name="user" ngModel>
+		<input type="password" name="pass" ngModel>
+		<button type="submit">Send</button>
+	</form>
+</div> -->
+
+<!-- <button routerLink="/pages">Log In</button> -->
+
+<!-- X1 -->
+<!-- <button (click)="onLogin()">Log In</button> -->
+
+<!-- X2 -->
+<!-- <button (click)="onAltLogin(form)">Alt Log In</button> -->
+
+<!-- X3 using ngSubmit and form -->
+<div style="display: flex; flex-direction: column;">
+	<form (ngSubmit)="onAltLogin(form)" #form="ngForm">
+		<input type="text" name="user" ngModel>
+		<input type="password" name="pass" ngModel>
+		<button type="submit">Send</button>
+	</form>
+</div>
 
 <button (click)="sw = !sw;">On/Off</button>
 

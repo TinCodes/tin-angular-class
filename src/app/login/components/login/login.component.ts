@@ -7,11 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+	username = '';
+	password = '';
+
 	sw = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onLogin() : void {
+  	console.log('User: ', this.username);
+  	console.log('Password: ', this.password);
+  }
+
+  onAltLogin(form) : void {
+  	console.log('Local Form: ', form.value);
   }
 
 }
