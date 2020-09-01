@@ -24,14 +24,35 @@
 <!-- <button (click)="onAltLogin(form)">Alt Log In</button> -->
 
 <!-- X3 using ngSubmit and form -->
-<div style="display: flex; flex-direction: column;">
+<!-- <div style="display: flex; flex-direction: column;">
 	<form (ngSubmit)="onAltLogin(form)" #form="ngForm">
 		<input type="text" name="user" ngModel>
 		<input type="password" name="pass" ngModel>
 		<button type="submit">Send</button>
 	</form>
+</div> -->
+
+<!-- <button (click)="sw = !sw;">On/Off</button>
+
+<p *ngElse="sw">Ooooooof</p> -->
+
+<input 
+	class="form-control"
+	type="text"
+	required
+	minlength="3"
+	maxlength="5" 
+	ngModel
+	#name="ngModel">
+
+<div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger">
+	<div *ngIf="name.errors.required">
+		Name required
+	</div>
+	<div *ngIf="name.errors.minlength">
+		Name must be at least 3 characters long.
+	</div>
+	<div *ngIf="name.errors.maxlength">
+		Name must not exceed 5 characters.
+	</div>
 </div>
-
-<button (click)="sw = !sw;">On/Off</button>
-
-<p *ngElse="sw">Ooooooof</p>
