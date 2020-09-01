@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
 
+import { ProductService } from '../../services/product.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,11 @@ import { AdminComponent } from './components/admin/admin.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+  	ProductService
   ]
 })
 export class AdminModule { }

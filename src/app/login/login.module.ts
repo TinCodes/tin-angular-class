@@ -15,7 +15,7 @@ import { NgElseDirective } from '../directives/ng-else.directive';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class LoginModule { }
