@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../../services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,23 @@ export class HomeComponent implements OnInit {
 
 	products = [];
 
+  productSub: Subscription;
+
   constructor(private productService: ProductService) {
 
   }
 
   ngOnInit(): void {
-  	this.productService.getProducts().subscribe(res => {
+  	this.productSub = this.productService.getProducts().subscribe(res => {
   		console.log("Response: ", res);
   		console.log("Response (Array): ", Object.entries(res));
 
   		Object.entries(res).map(p => this.products.push(p[1]));
   	});
+  }
+
+  ngOnDestroy(): void {
+    this.productSub.unsubscribe();
   }
 
 }

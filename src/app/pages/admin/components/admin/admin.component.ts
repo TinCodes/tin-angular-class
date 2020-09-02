@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service'
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-admin',
@@ -10,6 +12,8 @@ import { ProductService } from '../../../../services/product.service'
 export class AdminComponent implements OnInit {
 
 	productForm: FormGroup;
+
+  productSub: Subscription;
 
 	// nameControl = new FormControl();
 	// Form Control is not suitable for lots of inputs
@@ -28,9 +32,14 @@ export class AdminComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+    this.productSub ? this.productSub.unsubscribe() : '';
+  }
+
   onSend(): void {
   	console.log('Form group: ', this.productForm.value)
-    this.productService.addProduct(this.productForm.value).subscribe(
+    
+    this.productSub = this.productService.addProduct(this.productForm.value).subscribe(
       res => {
         console.log('POST Response: ', res);
       },
@@ -39,6 +48,8 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+
+
 
   // onSend() : void {
   // 	console.log('Control: ', this.nameControl);

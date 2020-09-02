@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../../services/product.service';
 
 @NgModule({
@@ -16,7 +18,9 @@ import { ProductService } from '../../services/product.service';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatButtonModule
   ],
   providers: [
   	ProductService
