@@ -8,6 +8,8 @@ import { AdminComponent } from './components/admin/admin.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 import { ProductService } from '../../services/product.service';
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ProductService } from '../../services/product.service';
     ReactiveFormsModule,
     HttpClientModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
   	ProductService
