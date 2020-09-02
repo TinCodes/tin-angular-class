@@ -30,9 +30,14 @@ export class AdminComponent implements OnInit {
 
   onSend(): void {
   	console.log('Form group: ', this.productForm.value)
-    this.productService.addProduct(this.productForm.value).subscribe(res => {
-      console.log('POST Response: ', res)
-    });
+    this.productService.addProduct(this.productForm.value).subscribe(
+      res => {
+        console.log('POST Response: ', res);
+      },
+      err => {
+        console.log("SERVER ERROR: ", err);
+      }
+    );
   }
 
   // onSend() : void {
