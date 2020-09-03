@@ -25,5 +25,11 @@ export class ProductService {
     return this.http.delete(`https://tincannonica.firebaseio.com/products/${id}.json`)
   }
   
+  public updateProduct(id: any, product: any) : Observable<any> {
+    return this.http.put(
+      `https://tincannonica.firebaseio.com/products/${id}.json`,
+      product
+    );
+  }
 
 }

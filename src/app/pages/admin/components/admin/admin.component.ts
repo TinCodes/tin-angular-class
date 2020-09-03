@@ -17,6 +17,10 @@ export class AdminComponent implements OnInit {
 
   productSub: Subscription;
   productGetSub: Subscription;
+  productPutSub: Subscription;
+  productDelSub: Subscription;
+
+  editId : any;
 
 	// nameControl = new FormControl();
 	// Form Control is not suitable for lots of inputs
@@ -27,7 +31,7 @@ export class AdminComponent implements OnInit {
 
   loadProducts() : void {
     this.products = [];
-    this.productSub = this.productService.getProducts().subscribe(res => {
+    this.productGetSub = this.productService.getProducts().subscribe(res => {
       // console.log("Response: ", res);
       // console.log("Response (Array): ", Object.entries(res));
 
@@ -35,9 +39,46 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  onCreate(): void {
+  	console.log('Form group: ', this.productForm.value)
+    
+    this.productSub = this.productService.addProduct(this.productForm.value).subscribe(
+      res => {
+        console.log('POST Response: ', res);
+        this.loadProducts();
+      },
+      err => {
+        console.log("SERVER ERROR: ", err);
+      }
+    );
+  }
+
+  onEdit(product) : void {
+    console.log("Current Product: ", product);
+
+    this.editId = product.id;
+    this.productForm.patchValue({
+      title: product.title,
+      description: product.description,
+      imageUrl: product.imageUrl,
+      ownerId: product.ownerId,
+      price: product.price
+    });
+  }
+
+  onUpdate() : void {
+    this.productPutSub = this.productService.updateProduct(this.editId ,this.productForm.value).subscribe(res => {
+      console.log("UPDATE Response: ", res);
+      this.loadProducts();
+    },
+    err => {
+      console.log("UPDATE Error: ", err)
+    });
+  }
+
   onDelete(id: any) : void {
-    console.log("Item ID: ", id);
-    this.productService.deleteProduct(id).subscribe(res => {
+    // console.log("Item ID: ", id);
+    this.productDelSub = this.productService.deleteProduct(id).subscribe(res => {
       console.log("DELETE Response: ", res);
       this.loadProducts();
     },
@@ -46,8 +87,8 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
   	this.productForm = this.formBuilder.group({
   		title: '',
 			description: ['', [ Validators.required, Validators.minLength(10), Validators.maxLength(20) ]],
@@ -61,20 +102,11 @@ export class AdminComponent implements OnInit {
   ngOnDestroy(): void {
     this.productSub ? this.productSub.unsubscribe() : '';
     this.productGetSub ? this.productGetSub.unsubscribe() : '';
+    this.productDelSub ? this.productDelSub.unsubscribe() : '';
+    this.productPutSub ? this.productPutSub.unsubscribe() : '';
+
   }
 
-  onSend(): void {
-  	console.log('Form group: ', this.productForm.value)
-    
-    this.productSub = this.productService.addProduct(this.productForm.value).subscribe(
-      res => {
-        console.log('POST Response: ', res);
-      },
-      err => {
-        console.log("SERVER ERROR: ", err);
-      }
-    );
-  }
 
 
 
