@@ -21,6 +21,9 @@ export class ProductService {
   	);
   }
 
+  public deleteProduct(id: any) : Observable<any> {
+    return this.http.delete(`https://tincannonica.firebaseio.com/products/${id}.json`)
+  }
   
 
 }

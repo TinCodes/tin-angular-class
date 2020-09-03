@@ -22,11 +22,27 @@ export class AdminComponent implements OnInit {
 	// Form Control is not suitable for lots of inputs
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) {
-    this.productSub = this.productService.getProducts().subscribe(res => {
-      console.log("Response: ", res);
-      console.log("Response (Array): ", Object.entries(res));
+    this.loadProducts();
+  }
 
-      Object.entries(res).map(p => this.products.push(p[1]));
+  loadProducts() : void {
+    this.products = [];
+    this.productSub = this.productService.getProducts().subscribe(res => {
+      // console.log("Response: ", res);
+      // console.log("Response (Array): ", Object.entries(res));
+
+      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+    });
+  }
+
+  onDelete(id: any) : void {
+    console.log("Item ID: ", id);
+    this.productService.deleteProduct(id).subscribe(res => {
+      console.log("DELETE Response: ", res);
+      this.loadProducts();
+    },
+    err => {
+      console.log("DELETE Error: ", err)
     });
   }
 
