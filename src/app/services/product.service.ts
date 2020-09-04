@@ -11,23 +11,23 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   public getProducts() : Observable<any> {
-  	return this.http.get('https://tincannonica.firebaseio.com/products.json');
+  	return this.http.get('https://amazzon-test.firebaseio.com/products.json');
   }
 
   public addProduct(product: any) : Observable<any> {
   	return this.http.post(
-  		'https://tincannonica.firebaseio.com/products.json',
+  		'https://amazzon-test.firebaseio.com/products.json',
   		product
   	);
   }
 
   public deleteProduct(id: any) : Observable<any> {
-    return this.http.delete(`https://tincannonica.firebaseio.com/products/${id}.json`)
+    return this.http.delete(`https://amazzon-test.firebaseio.com/products/${id}.json`)
   }
   
   public updateProduct(id: any, product: any) : Observable<any> {
     return this.http.put(
-      `https://tincannonica.firebaseio.com/products/${id}.json`,
+      `https://amazzon-test.firebaseio.com/products/${id}.json`,
       product
     );
   }
