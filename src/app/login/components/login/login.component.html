@@ -1,4 +1,38 @@
-<p>login works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #form="ngForm" style="display: flex; flex-direction: column;">
+    	<mat-form-field appearance="fill">
+      	<mat-label>Email</mat-label>
+      	<input matInput name="email" type="text" #emailUI="ngModel" ngModel required>
+      </mat-form-field>
+      <div *ngIf="emailUI.invalid &&
+    	 			(emailUI.touched ||
+    	  			emailUI.dirty)" class="alert alert-danger">
+    		<div *ngIf="emailUI.errors.required">
+    			Description required
+    		</div>
+    	</div>
+      <mat-form-field appearance="fill">
+      	<mat-label>Password</mat-label>
+      	<input matInput name="password" type="password" #passwordUI="ngModel" ngModel required>
+      </mat-form-field>
+      <div *ngIf="passwordUI.invalid &&
+    	 			(passwordUI.touched ||
+    	  			passwordUI.dirty)" class="alert alert-danger">
+    		<div *ngIf="passwordUI.errors.required">
+    			Description required
+    		</div>
+    	</div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onLogin(form)" mat-button [disabled]="form.invalid">Login</button>
+  </mat-card-actions>
+</mat-card>
+
 
 <!-- using banana function -->
 <!-- <div style="display: flex; flex-direction: column;">
@@ -24,13 +58,13 @@
 <!-- <button (click)="onAltLogin(form)">Alt Log In</button> -->
 
 <!-- X3 using ngSubmit and form -->
-<div style="display: flex; flex-direction: column;">
+<!-- <div style="display: flex; flex-direction: column;">
 	<form (ngSubmit)="onAltLogin(form)" #form="ngForm">
 		<input type="text" name="user" ngModel>
 		<input type="password" name="pass" ngModel>
 		<button type="submit">Send</button>
 	</form>
-</div>
+</div> -->
 
 <!-- <button (click)="sw = !sw;">On/Off</button>
 
