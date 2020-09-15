@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  app: {
+  	apiBaseUrl: "https://tincannonica.firebaseio.com", 
+  },
+
+  auth: {
+  	apiBaseUrl: 'https://identitytoolkit.googleapis.com',
+  	key: 'AIzaSyCqir5m5Shm-umC38OP-s8pye54qCsDzFg'
+  }
 };
 
 /*

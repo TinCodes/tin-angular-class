@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,31 @@ import { Observable } from 'rxjs';
 
 export class ProductService {
 
+  url = environment.app.apiBaseUrl;
+
   constructor(private http: HttpClient) { }
 
   public getProducts() : Observable<any> {
-  	return this.http.get('https://tincannonica.firebaseio.com/products.json');
+  	return this.http.get(`${this.url}/products.json`);
+  }
+  public getProductsById(id: any) : Observable<any> {
+    return this.http.get(`${this.url}/products.json?orderBy="ownerId"&equalTo="${id}"&print=pretty`);
   }
 
   public addProduct(product: any) : Observable<any> {
   	return this.http.post(
-  		'https://tincannonica.firebaseio.com/products.json',
+  		`${this.url}/products.json`,
   		product
   	);
   }
 
   public deleteProduct(id: any) : Observable<any> {
-    return this.http.delete(`https://tincannonica.firebaseio.com/products/${id}.json`)
+    return this.http.delete(`${this.url}/products/${id}.json`)
   }
   
   public updateProduct(id: any, product: any) : Observable<any> {
     return this.http.put(
-      `https://tincannonica.firebaseio.com/products/${id}.json`,
+      `${this.url}/products/${id}.json`,
       product
     );
   }

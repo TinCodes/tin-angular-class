@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
-import { PagesComponent } from './components/pages/pages.component';
+import { PagesComponent } from './pages.component';
 
 
 @NgModule({

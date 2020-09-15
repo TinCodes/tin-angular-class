@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,9 +16,14 @@ export class LoginComponent implements OnInit {
   onLogin(form: any) : void {
   	console.log('Form: ', form.value);
 
-    this.authService.login(form.value).subscribe(
+    this.authService.login({
+      email: form.value.email,
+      password: form.value.password,
+      returnSecureToken: true
+    }).subscribe(
       res => {
         console.log('Login Response: ', res);
+        this.router.navigate(['pages']);
       },
       err => {
         console.log('Login Error: ', err);

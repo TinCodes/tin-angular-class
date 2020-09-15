@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductService } from '../../../../services/product.service'
+import { ProductService } from '../../shared/services/product.service';
 import { Subscription } from 'rxjs';
 
 
@@ -31,7 +31,8 @@ export class AdminComponent implements OnInit {
 
   loadProducts() : void {
     this.products = [];
-    this.productGetSub = this.productService.getProducts().subscribe(res => {
+    const idUser = localStorage.getItem('userId')
+    this.productGetSub = this.productService.getProductsById(idUser).subscribe(res => {
       // console.log("Response: ", res);
       // console.log("Response (Array): ", Object.entries(res));
 
@@ -42,7 +43,10 @@ export class AdminComponent implements OnInit {
   onCreate(): void {
   	console.log('Form group: ', this.productForm.value)
     
-    this.productSub = this.productService.addProduct(this.productForm.value).subscribe(
+    this.productSub = this.productService.addProduct({
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }).subscribe(
       res => {
         console.log('POST Response: ', res);
         this.loadProducts();
@@ -67,7 +71,10 @@ export class AdminComponent implements OnInit {
   }
 
   onUpdate() : void {
-    this.productPutSub = this.productService.updateProduct(this.editId ,this.productForm.value).subscribe(res => {
+    this.productPutSub = this.productService.updateProduct(this.editId, {
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }).subscribe(res => {
       console.log("UPDATE Response: ", res);
       this.loadProducts();
     },
