@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../shared/services/product.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../shared/services/auth.service';
 
 
 @Component({
@@ -25,13 +26,15 @@ export class AdminComponent implements OnInit {
 	// nameControl = new FormControl();
 	// Form Control is not suitable for lots of inputs
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductService) {
+  constructor(private formBuilder: FormBuilder,
+              private productService: ProductService,
+              private authService: AuthService) {
     this.loadProducts();
   }
 
   loadProducts() : void {
     this.products = [];
-    const idUser = localStorage.getItem('userId')
+    const idUser = this.authService.getUserId();
     this.productGetSub = this.productService.getProductsById(idUser).subscribe(res => {
       // console.log("Response: ", res);
       // console.log("Response (Array): ", Object.entries(res));
@@ -45,7 +48,7 @@ export class AdminComponent implements OnInit {
     
     this.productSub = this.productService.addProduct({
       ...this.productForm.value,
-      ownerId: localStorage.getItem('userId')
+      ownerId: this.authService.getUserId()
     }).subscribe(
       res => {
         console.log('POST Response: ', res);
@@ -73,7 +76,7 @@ export class AdminComponent implements OnInit {
   onUpdate() : void {
     this.productPutSub = this.productService.updateProduct(this.editId, {
       ...this.productForm.value,
-      ownerId: localStorage.getItem('userId')
+      ownerId: this.authService.getUserId()
     }).subscribe(res => {
       console.log("UPDATE Response: ", res);
       this.loadProducts();
