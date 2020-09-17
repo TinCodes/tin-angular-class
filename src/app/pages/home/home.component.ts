@@ -33,8 +33,8 @@ export class HomeComponent implements OnInit {
     this.productSub ? this.productSub.unsubscribe() : '';
   }
 
-  onBuy(): void {
-    this.store.dispatch(AddProduct({product: 'Im a product!'}));
+  onBuy(product): void {
+    this.store.dispatch(AddProduct({product: product}));
   }
 
 }
