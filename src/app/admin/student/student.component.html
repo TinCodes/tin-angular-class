@@ -1,0 +1,14 @@
+<mat-card class="example-card" style="width: 250px; margin: 10px;" [ngStyle]="{'background-color': (student.age <= 18) ? 'orange' : 'red'}">
+  <mat-card-header>
+    <mat-card-title>{{student.name | uppercase}}</mat-card-title>
+  </mat-card-header>
+  <img style="width: 100px;" mat-card-image [src]="student.urlImage">
+  <mat-card-content>
+    <p>Age: {{student.age}}</p>
+    <p>Grade: {{student.grade | gradePipe}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onEdit(student);">Edit</button>
+    <button mat-button (click)="onDelete(student.id)">Delete</button>
+  </mat-card-actions>
+</mat-card>

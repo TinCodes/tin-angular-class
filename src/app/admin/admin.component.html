@@ -1,0 +1,23 @@
+<navhead></navhead>
+<mat-drawer-container class="example-container" autosize style="width: 100%; height: 100%">
+	<sidenav [theForm]="theForm"></sidenav>
+  <div class="row" style="display: flex; justify-content: left;" style="background-color: green">
+    <h1>Primary</h1>
+    <div *ngFor="let prim of primary" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+  		<student
+  			[student]="prim"
+  			(formForSide)="onGetForm($event)"
+  		></student> 
+    </div>
+  </div>
+  <div class="row" style="padding: 50px; display: flex; justify-content: left;" style="background-color: blue">
+		<h1>Secondary</h1>
+	  <div *ngFor="let sec of secondary" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+			<student
+				[student]="sec"
+				(formForSide)="onGetForm($event)"
+			></student>
+	  </div>
+	</div>
+
+</mat-drawer-container>
