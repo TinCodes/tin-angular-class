@@ -6,6 +6,10 @@ import { HomeComponent } from './home.component';
 
 import { MatButtonModule } from '@angular/material/button'; 
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 import { ProductService } from '../../shared/services/product.service';
 
@@ -17,7 +21,12 @@ import { ProductService } from '../../shared/services/product.service';
     CommonModule,
     HomeRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
   	ProductService
