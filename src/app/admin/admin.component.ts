@@ -12,12 +12,15 @@ import { AuthService } from '../shared/services/auth.service';
 export class AdminComponent implements OnInit {
 
   students = [];
+  searchStudents = [];
   primary = [];
   secondary = [];
   theForm: any;
+  query: string;
 	studentForm: FormGroup;
 
   studentSub: Subscription;
+  studentSearchSub: Subscription;
   studentGetSub: Subscription;
   studentPutSub: Subscription;
   studentDelSub: Subscription;
@@ -38,6 +41,15 @@ export class AdminComponent implements OnInit {
       this.primary = this.students.filter(s => s.grade === "P"); 
       this.secondary = this.students.filter(s => s.grade === "S"); 
     });
+  }
+
+  onSearch() {
+    if (this.query) {
+      this.primary = this.primary.filter(s => s.name.includes(this.query.toLowerCase()));
+      this.secondary = this.secondary.filter(s => s.name.includes(this.query.toLowerCase()));
+    } else {
+      this.loadStudents()
+    }
   }
 
   onCreate(): void {   
@@ -112,6 +124,7 @@ export class AdminComponent implements OnInit {
     this.studentGetSub ? this.studentGetSub.unsubscribe() : '';
     this.studentDelSub ? this.studentDelSub.unsubscribe() : '';
     this.studentPutSub ? this.studentPutSub.unsubscribe() : '';
+    this.studentSearchSub ? this.studentSearchSub.unsubscribe() : '';
   }
 
 }
