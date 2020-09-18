@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { StudentService } from '../../shared/services/student.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
+import { Store } from '@ngrx/store';
+import { LessPrimary, LessSecondary} from '../store/admin.actions';
 
 @Component({
   selector: 'student',
@@ -26,7 +28,8 @@ export class StudentComponent implements OnInit {
 
 	constructor(private formBuilder: FormBuilder,
               private studentService: StudentService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private store: Store<any>) {
 		this.loadStudents();
 	}
 
@@ -44,7 +47,7 @@ export class StudentComponent implements OnInit {
     this.primary = [];
     this.secondary = [];
     const idUser = this.authService.getUserId();
-    this.studentGetSub = this.studentService.getStudents().subscribe(res => {
+    this.studentGetSub = this.studentService.getStudentById(idUser).subscribe(res => {
 
       Object.entries(res).map((p: any) => this.students.push({id: p[0], ...p[1]}));
     });
@@ -66,6 +69,11 @@ export class StudentComponent implements OnInit {
   onDelete(id: any) : void {
     this.studentDelSub = this.studentService.deleteStudent(id).subscribe(res => {
       console.log("DELETE Response: ", res);
+      if (res.grade === "P") {
+      	this.store.dispatch(LessPrimary({primary: this.primary.length}))
+      } else if (res.grade === "S") {
+      	this.store.dispatch(LessSecondary({secondary: this.secondary.length}))
+      }
       this.loadStudents();
       window.location.reload();
     },

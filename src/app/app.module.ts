@@ -15,6 +15,11 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 import { MatIconModule } from '@angular/material/icon';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './core/index';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +31,10 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     FormsModule,
     AppRouting,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({name: 'Angular Course', logOnly: environment.production })
   ],
   providers: [
     AuthService,

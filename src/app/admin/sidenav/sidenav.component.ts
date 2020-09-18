@@ -3,6 +3,9 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { StudentService } from '../../shared/services/student.service';
 import { AuthService } from '../../shared/services/auth.service';
+import { Store } from '@ngrx/store';
+import { AddPrimary, AddSecondary } from '../store/admin.actions';
+
 
 @Component({
   selector: 'sidenav',
@@ -13,6 +16,8 @@ export class SidenavComponent implements OnInit {
 	@Input() theForm: any;
 
 	students = [];
+  primary = [];
+  secondary = [];
 
 	studentForm: FormGroup;
 	studentSub: Subscription;
@@ -24,14 +29,17 @@ export class SidenavComponent implements OnInit {
 
 	constructor(private formBuilder: FormBuilder,
               private studentService: StudentService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private store: Store) {
 		this.loadStudents();
 	}
 
 	loadStudents() : void {
     this.students = [];
+    this.primary = [];
+    this.secondary = [];
     const idUser = this.authService.getUserId();
-    this.studentGetSub = this.studentService.getStudents().subscribe(res => {
+    this.studentGetSub = this.studentService.getStudentById(idUser).subscribe(res => {
 
       Object.entries(res).map((p: any) => this.students.push({id: p[0], ...p[1]}));
     });
@@ -44,6 +52,11 @@ export class SidenavComponent implements OnInit {
     }).subscribe(
       res => {
         console.log('POST Response: ', res);
+        if (res.grade === "P") {
+          this.store.dispatch(AddPrimary({primary: this.primary.length}))
+        } else if (res.grade === "S") {
+          this.store.dispatch(AddSecondary({secondary: this.secondary.length}))
+        }
         this.loadStudents();
         window.location.reload();
       },

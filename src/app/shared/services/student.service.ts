@@ -16,9 +16,10 @@ export class StudentService {
   public getStudents() : Observable<any> {
   	return this.http.get(`${this.url}/students.json`);
   }
-  // public getStudentsById(id: any) : Observable<any> {
-  //   return this.http.get(`${this.url}/students.json?orderBy="ownerId"&equalTo="${id}"&print=pretty`);
-  // }
+
+  public getStudentById(id: any) : Observable<any> {
+    return this.http.get(`${this.url}/students.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  }
 
   public addStudent(student: any) : Observable<any> {
   	return this.http.post(
